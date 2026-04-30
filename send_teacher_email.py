@@ -17,7 +17,7 @@ from pathlib import Path
 
 SENDER_EMAIL = os.environ.get("SENDER_EMAIL", "jmoya@colegiocabodehornos.cl")
 SENDER_NAME  = os.environ.get("SENDER_NAME",  "Colegio Cabo de Hornos")
-SMTP_HOST    = os.environ.get("SMTP_HOST",    "smtp.gmail.com")
+SMTP_HOST    = os.environ.get("SMTP_HOST",    "smtp.office365.com")
 SMTP_PORT    = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USER    = os.environ.get("SMTP_USER",    SENDER_EMAIL)
 SMTP_PASS    = os.environ.get("SMTP_PASS",    "")  # App password / contraseña de aplicación
