@@ -262,7 +262,7 @@ def construir_html(mensaje: dict, fecha: str) -> str:
   <div class="wrapper">
     <div class="header">
       <span class="sun-icon">☀️</span>
-      <p class="school">Colegio Cabo de Hornos — Educación Básica</p>
+      <p class="school">Colegio Cabo de Hornos - Segundo ciclo básico</p>
       <h1>{mensaje["titulo"]}</h1>
       <p class="fecha">{fecha}</p>
     </div>
@@ -278,7 +278,7 @@ def construir_html(mensaje: dict, fecha: str) -> str:
       </p>
       <div class="firma">
         Con aprecio,<br />
-        <strong>Dirección — Colegio Cabo de Hornos</strong><br />
+        <strong>John Moya - Director de estudio</strong><br />
         <a href="mailto:jmoya@colegiocabodehornos.cl" style="color:#2e86c1;">
           jmoya@colegiocabodehornos.cl
         </a>
@@ -286,7 +286,7 @@ def construir_html(mensaje: dict, fecha: str) -> str:
     </div>
     <div class="footer">
       Este mensaje es enviado automáticamente cada día hábil a las 08:00 h.<br />
-      Colegio Cabo de Hornos &mdash; Educación Básica
+      Colegio Cabo de Hornos - Segundo ciclo básico
     </div>
   </div>
 </body>
@@ -295,7 +295,7 @@ def construir_html(mensaje: dict, fecha: str) -> str:
 
 def construir_texto_plano(mensaje: dict, fecha: str) -> str:
     return (
-        f"Colegio Cabo de Hornos — Educación Básica\n"
+        f"Colegio Cabo de Hornos - Segundo ciclo básico\n"
         f"{fecha}\n\n"
         f"{mensaje['titulo']}\n"
         f"{'─' * len(mensaje['titulo'])}\n\n"
@@ -305,7 +305,7 @@ def construir_texto_plano(mensaje: dict, fecha: str) -> str:
         f"Les deseamos un día lleno de energía, entusiasmo y gratificantes momentos "
         f"junto a sus estudiantes. ¡Que tengan un excelente día!\n\n"
         f"Con aprecio,\n"
-        f"Dirección — Colegio Cabo de Hornos\n"
+        f"John Moya - Director de estudio\n"
         f"jmoya@colegiocabodehornos.cl\n"
     )
 
