@@ -1,0 +1,2 @@
+# No hay dependencias externas — solo módulos de la librería estándar de Python
+# smtplib, email, json, os, hashlib, datetime, pathlib

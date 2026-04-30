@@ -1,0 +1,36 @@
+name: Correo Motivacional Diario — Profesores Básica
+
+on:
+  schedule:
+    # 8:00 AM Chile (CLT = UTC-4) → 12:00 UTC
+    # Ejecuta lunes a viernes (el filtro de día se hace en el script)
+    - cron: "0 11 * * 1-5"
+  # Permite ejecutar manualmente desde la UI de GitHub
+  workflow_dispatch:
+
+jobs:
+  enviar-correo:
+    name: Enviar correo motivacional
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Enviar correo
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_NAME:  ${{ secrets.SENDER_NAME }}
+          SMTP_HOST:    ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:    ${{ secrets.SMTP_PORT }}
+          SMTP_USER:    ${{ secrets.SMTP_USER }}
+          SMTP_PASS:    ${{ secrets.SMTP_PASS }}
+        run: python send_teacher_email.py
