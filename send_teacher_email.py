@@ -123,6 +123,56 @@ MESSAGES = [
             "¡Que este día esté lleno de momentos que valgan la pena!"
         ),
         "frase": "«Un maestro afecta a la eternidad; nunca puede decir dónde termina su influencia.» — Henry Adams",
+     },
+    {
+        "titulo": "La paciencia es su mayor virtud",
+        "cuerpo": "Sabemos que hay días desafiantes, pero es precisamente en esos momentos donde su templanza guía a los más pequeños. Su calma es el refugio donde sus alumnos aprenden a crecer.",
+        "frase": "«La paciencia es amarga, pero su fruto es dulce.» — Jean-Jacques Rousseau",
+    },
+    {
+        "titulo": "Pequeños gestos, grandes cambios",
+        "cuerpo": "Una palabra de aliento a tiempo puede cambiar el rumbo de la semana de un niño. Ustedes tienen el don de ver el potencial donde otros ven dificultades. Gracias por estar presentes.",
+        "frase": "«La enseñanza es más que impartir conocimiento, es inspirar el cambio.» — William Arthur Ward",
+    },
+    {
+        "titulo": "Ustedes son el corazón del colegio",
+        "cuerpo": "Más allá de los contenidos, lo que nuestros estudiantes recordarán es cómo los hicieron sentir. Su calidez humana es lo que transforma nuestra institución en un segundo hogar.",
+        "frase": "«El objeto de la educación es preparar a los jóvenes para que se eduquen a sí mismos durante toda su vida.» — Robert M. Hutchins",
+    },
+    {
+        "titulo": "Creatividad que abre puertas",
+        "cuerpo": "Cada vez que adaptan una lección para que todos entiendan, están haciendo magia pedagógica. Su creatividad es la llave que abre las puertas del conocimiento para cada niño.",
+        "frase": "«La creatividad es la inteligencia divirtiéndose.» — Albert Einstein",
+    },
+    {
+        "titulo": "Sembrando curiosidad",
+        "cuerpo": "Un gran docente no da las respuestas, sino que enseña a hacerse las preguntas correctas. Que hoy sea un día de mucha curiosidad y descubrimientos en sus aulas.",
+        "frase": "«No tengo talentos especiales, solo soy apasionadamente curioso.» — Albert Einstein",
+    },
+    {
+        "titulo": "El valor del ejemplo",
+        "cuerpo": "Los niños no siempre escuchan lo que decimos, pero siempre observan lo que hacemos. Su ética y compromiso son el mejor currículum que pueden entregar.",
+        "frase": "«La enseñanza que deja huella no es la que se hace de cabeza a cabeza, sino de corazón a corazón.» — Howard G. Hendricks",
+    },
+    {
+        "titulo": "Resiliencia en el aula",
+        "cuerpo": "Enseñar requiere una fuerza especial. Gracias por levantarse cada día con la convicción de que cada estudiante merece una oportunidad de brillar.",
+        "frase": "«El éxito no es el final, el fracaso no es fatal: es el coraje de continuar lo que cuenta.» — Winston Churchill",
+    },
+    {
+        "titulo": "Arquitectos del pensamiento",
+        "cuerpo": "Hoy ayudan a estructurar ideas, a cuestionar realidades y a soñar mundos mejores. Su labor intelectual es el cimiento de nuestra sociedad.",
+        "frase": "«Educar la mente sin educar el corazón no es educación en absoluto.» — Aristóteles",
+    },
+    {
+        "titulo": "La alegría de aprender",
+        "cuerpo": "Que el entusiasmo que sienten por su profesión se contagie hoy en cada rincón del segundo ciclo. ¡Hagamos que aprender sea una aventura hoy!",
+        "frase": "«El aprendizaje nunca agota la mente.» — Leonardo da Vinci",
+    },
+    {
+        "titulo": "Puntales de esperanza",
+        "cuerpo": "Incluso en los días nublados, su labor es un rayo de sol para aquellos estudiantes que enfrentan dificultades. Gracias por ser ese apoyo constante.",
+        "frase": "«La educación es la esperanza del futuro.» — Proverbio",
     },
 ]
 
@@ -311,10 +361,19 @@ def construir_texto_plano(mensaje: dict, fecha: str) -> str:
 
 
 def cargar_destinatarios() -> list[str]:
+    # Intenta cargar desde archivo, si falla usa una lista por defecto o env var
     ruta = Path(__file__).parent / "config" / "recipients.json"
-    with open(ruta, encoding="utf-8") as f:
-        data = json.load(f)
-    return data.get("basica", [])
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            data = json.load(f)
+            return data.get("basica", [])
+    except FileNotFoundError:
+        # Si el archivo no está en GitHub, intenta leer una variable de entorno
+        # Esto es más seguro para evitar que el script se detenga
+        env_recipients = os.environ.get("RECIPIENTS_LIST")
+        if env_recipients:
+            return [email.strip() for email in env_recipients.split(",")]
+        return ["jmoya@colegiocabodehornos.cl"] # Fallback de seguridad
 
 
 def enviar_correo(destinatarios: list[str]) -> None:
