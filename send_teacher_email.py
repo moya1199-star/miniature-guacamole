@@ -175,7 +175,6 @@ MESSAGES = [
         "frase": "«La educación es la esperanza del futuro.» — Proverbio",
     },
     {
-        {
         "titulo": "La paciencia es su mayor virtud",
         "cuerpo": ("Sabemos que hay días desafiantes, pero es precisamente en esos momentos "
                    "donde su templanza guía a los más pequeños. Su calma es el refugio donde "
