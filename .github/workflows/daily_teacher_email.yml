@@ -4,7 +4,7 @@ on:
   schedule:
     # 6:00 AM Chile (CLT = UTC-4) → 10:00 UTC
     # Ejecuta lunes a viernes (el filtro de día se hace en el script)
-    - cron: "0 10 * * 1-5"
+    - cron: "0 12 * * 1-5"
   # Permite ejecutar manualmente desde la UI de GitHub
   workflow_dispatch:
 
