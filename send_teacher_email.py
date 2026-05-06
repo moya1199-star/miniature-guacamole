@@ -1,6 +1,6 @@
 """
 Envío automático de correos motivacionales diarios a profesores de Básica.
-Ejecutar de lunes a viernes a las 8:00 AM (Chile).
+Ejecutar de lunes a viernes a las 6:00 AM (Chile).
 """
 
 import smtplib
