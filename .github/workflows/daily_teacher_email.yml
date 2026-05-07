@@ -3,7 +3,7 @@ name: Correo Motivacional Diario
 on:
   schedule:
     # 6:00 AM Chile (UTC-4) = 10:00 UTC
-    - cron: "0 12 * * 1-5"
+    - cron: "0 07 * * 1-5"
   workflow_dispatch:
 
 jobs:
